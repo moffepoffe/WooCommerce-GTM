@@ -49,7 +49,7 @@ class WooCommerce_GTM_Conversion_Pixel  {
 		echo '<script>
 // The GTM code.
 dataLayer.push({
-  "event": "'. esc_js( 'ViewContent' ) .'",
+  "event": "'. wp_json_encode( 'ViewContent' ) .'",
       "products": [
 	  '.json_encode( $params ).'
       ]
@@ -80,7 +80,7 @@ dataLayer.push({
 		echo '<script>
 // The GTM code.
 dataLayer.push({
-  "event": "'. esc_js( 'Purchase' ) .'",
+  "event": "'. wp_json_encode( 'Purchase' ) .'",
       "products": [
 	  '.json_encode( $params ).'
       ]
@@ -106,7 +106,7 @@ dataLayer.push({
 		echo '<script>
 // The GTM code.
 dataLayer.push({
-  "event": "'. esc_js( 'InitiateCheckout' ) .'",
+  "event": "'. wp_json_encode( 'InitiateCheckout' ) .'",
       "products": [
 	  '.json_encode( $params ).'
       ]
@@ -123,7 +123,7 @@ dataLayer.push({
 ?>
 <script>
 (function($) {
-  $('<?php echo esc_js( $selector ); ?>').click(function() {
+  $('<?php echo wp_json_encode( $selector ); ?>').click(function() {
 <?php if( !empty( $params ) ) : ?>
     var params = <?php echo json_encode( $params ); ?>;
 <?php else : ?>
@@ -131,7 +131,7 @@ dataLayer.push({
 <?php endif; ?>
 // The GTM code.
 dataLayer.push({
-  "event": "<?php echo esc_js( $name ); ?>",
+  "event": "<?php echo wp_json_encode( $name ); ?>",
       "products": [
 	  params
       ]
